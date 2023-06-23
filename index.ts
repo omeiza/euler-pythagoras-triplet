@@ -5,23 +5,39 @@
  * Find the product abc.
  */
 
-function pythagorasTripletProduct(sum: number): number | void {
-	function isPythagorasTriplet(a: number, b: number, c: number): boolean {
-		if (a >= b || b >= c) return false;
-		return (a**2 + b**2) == c**2;
-	}
+export function isPythagorasTriplet([x, y, z]: number[]): boolean {
+	if (x >= y || y >= z) return false;
+	return (x**2 + y**2) == z**2;
+}
 
+export function pythagorasTripletProduct(sum: number): number | boolean {
 	for (let z = 1; z < sum; z++) {
 		for (let y = 1; y < z; y++) {
 			for (let x = 1; x < y; x++) {
-				const total = [x, y, z].reduce(function(accumulator, a) {
+				const total = [x, y, z].reduce((accumulator, a) => {
 					return accumulator + a;
 				}, 0);
 
-				if (isPythagorasTriplet(x, y, z) && total === sum) return x * y * z;
+				if (isPythagorasTriplet([x, y, z]) && total === sum) return x * y * z;
 			}
 		}
 	}
+
+	return false;
 }
 
-console.log(pythagorasTripletProduct(1000));
+export function pythagorasTripletSum(sum: number): number[] {
+	for (let z = 1; z < sum; z++) {
+		for (let y = 1; y < z; y++) {
+			for (let x = 1; x < y; x++) {
+				const total = [x, y, z].reduce((accumulator, a) => {
+					return accumulator + a;
+				}, 0);
+
+				if (isPythagorasTriplet([x, y, z]) && total === sum) return [x, y, z];
+			}
+		}
+	}
+
+	return [];
+}

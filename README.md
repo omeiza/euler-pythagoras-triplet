@@ -8,3 +8,6 @@ There exists exactly one Pythagorean triplet for which a + b + c = 1000.\
 Find the product abc.
 
 [Project euler problem 9](https://projecteuler.net/problem=9)
+
+## Get this working
+Check the test cases and run `npm test` 😊
